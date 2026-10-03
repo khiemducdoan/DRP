@@ -1,0 +1,13 @@
+# E6a -- only RING-based functional groups exposed (26 of 61 bits).
+# THEORY.md Proposition 3: message-passing GNNs provably cannot
+# induced-subgraph-count connected substructures of 3+ nodes, so identifying a
+# ring system as a unit is the part an atom encoder cannot do for itself.
+# The feature vector keeps its full width; non-ring entries are masked to zero,
+# so parameter count is identical to A4 and cannot explain any difference.
+defaults: [../base.yaml]
+name: abl_e6_ring_groups
+featurizer:
+  functional_group_subset: ring
+model:
+  name: E6a-RingGroups
+  use_cell_conditioned_attention: false

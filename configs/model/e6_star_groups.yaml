@@ -1,0 +1,11 @@
+# E6b -- only STAR/TREE functional groups exposed (35 of 61 bits).
+# These are the patterns message passing *can* subgraph-count, so Proposition 3
+# predicts they add little over the atom encoder. If they help as much as the
+# ring half, the expressivity explanation is wrong.
+defaults: [../base.yaml]
+name: abl_e6_star_groups
+featurizer:
+  functional_group_subset: star
+model:
+  name: E6b-StarGroups
+  use_cell_conditioned_attention: false

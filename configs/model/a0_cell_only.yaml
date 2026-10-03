@@ -1,0 +1,12 @@
+# A0 -- the floor. No drug information at all: the model sees only the cell line.
+# Whatever a drug-aware model scores above this is what its molecular
+# representation is worth. Under LDO this is close to the cell-line-mean
+# predictor, which is the point.
+defaults: [../base.yaml]
+name: abl_a0_cell_only
+model:
+  name: A0-CellOnly
+  use_atom_view: false
+  use_frag_view: false
+  use_cell_conditioned_attention: false
+  interaction: concat

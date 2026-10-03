@@ -1,0 +1,7 @@
+# A4 -- A3 plus the fragment chemical priors (descriptors + functional groups),
+# still with plain attention readout rather than cell-conditioned attention.
+defaults: [../base.yaml]
+name: abl_a4_atom_frag_priors
+model:
+  name: A4-AtomFrag-Priors
+  use_cell_conditioned_attention: false

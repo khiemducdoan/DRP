@@ -1,0 +1,5 @@
+# A5 -- the full model: A4 plus cell-line-conditioned attention over fragments.
+defaults: [../base.yaml]
+name: abl_a5_fragdrp_full
+model:
+  name: A5-FragDRP-Full

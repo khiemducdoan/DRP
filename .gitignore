@@ -1,0 +1,21 @@
+# Benchmark data downloaded by drevalpy (several GB)
+data/
+!data/.gitkeep
+
+# Generated results, figures and logs
+results/
+scratch/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# The report is generated; keep it only if you want a snapshot committed
+# REPORT.md
+checkpoints/
+lightning_logs/

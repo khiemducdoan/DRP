@@ -1,0 +1,7 @@
+# Leave-pairs-out: the protocol DAF-DRP reports. Both the drug and the cell line
+# were seen in training, so per-drug and per-cell-line means alone already score
+# highly. Included to show what the headline numbers in that protocol mean.
+defaults: [../base.yaml]
+name: protocol_lpo
+data:
+  test_mode: LPO

@@ -1,0 +1,6 @@
+defaults: [../base.yaml]
+name: frag_murcko
+fragmenter:
+  method: murcko
+model:
+  name: FragDRP-murcko

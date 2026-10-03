@@ -1,0 +1,16 @@
+# A6 -- DAF-DRP's fragment representation, ported into this codebase.
+# Fragment nodes come from a learnable lookup table over a mined vocabulary,
+# with no composition from atoms and no computed chemical priors. Everything
+# else (splits, cell encoder, training, metrics) is held identical, so the gap
+# to A4/A5 measures the representation choice and nothing else.
+defaults: [../base.yaml]
+name: abl_a6_daf_style_vocab
+featurizer:
+  use_descriptors: false
+  use_functional_groups: false
+  use_fragment_vocab: true
+  vocab_size: 798
+model:
+  name: A6-DAFStyle-Vocab
+  compose_from_atoms: false
+  use_cell_conditioned_attention: false

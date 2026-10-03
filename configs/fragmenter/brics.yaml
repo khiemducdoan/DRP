@@ -1,0 +1,6 @@
+defaults: [../base.yaml]
+name: frag_brics
+fragmenter:
+  method: brics
+model:
+  name: FragDRP-brics

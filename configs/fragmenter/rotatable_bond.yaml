@@ -1,0 +1,6 @@
+defaults: [../base.yaml]
+name: frag_rotatable_bond
+fragmenter:
+  method: rotatable_bond
+model:
+  name: FragDRP-rotatable_bond

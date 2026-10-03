@@ -1,0 +1,16 @@
+# THE FALSIFICATION TEST. Cuts are placed uniformly at random on acyclic single
+# bonds, with the number of cuts tuned so the final fragment count matches what
+# BRICS produces on the same molecule. Fragment count and size distribution
+# therefore match BRICS; only the chemical meaning of the cut is removed.
+#
+# If this scores as well as BRICS, then the benefit of the fragment view is
+# coarse-graining and extra depth, NOT functional-group semantics, and the
+# hypothesis as stated is false. No prior fragment-based DRP paper runs this.
+defaults: [../base.yaml]
+name: frag_random_cut
+fragmenter:
+  method: random_cut
+  match_reference_count: true
+  random_cut_seed: 0
+model:
+  name: FragDRP-random_cut

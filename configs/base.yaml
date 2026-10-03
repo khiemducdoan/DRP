@@ -1,0 +1,64 @@
+# Base configuration. Every other config inherits from this one and overrides
+# only what it changes, so a diff between two configs is exactly the
+# experimental manipulation.
+name: fragdrp_base
+output_dir: results
+
+data:
+  dataset_name: GDSC2
+  path_data: data
+  test_mode: LDO          # the protocol in which the drug encoder is actually tested
+  n_cv_splits: 6
+  validation_ratio: 0.1
+  response_transform: standard
+  cell_line_view: gene_expression
+  gene_subset: landmark   # LINCS L1000 landmark genes
+  max_drugs: null
+  max_cell_lines: null
+  min_pairs_per_drug: 20
+  min_pairs_per_cell_line: 5
+
+fragmenter:
+  method: brics
+  max_fragments: 32
+  min_fragment_atoms: 2
+  random_cut_seed: 0
+  match_reference_count: true
+
+featurizer:
+  use_descriptors: true
+  use_functional_groups: true
+  use_fragment_vocab: false
+  vocab_size: 798
+  cache_dir: data/featurised
+
+model:
+  name: FragDRP
+  hidden_dim: 128
+  dropout: 0.3
+  use_atom_view: true
+  atom_layers: 4
+  atom_readout: sum
+  use_frag_view: true
+  frag_layers: 3
+  frag_readout: attention
+  compose_from_atoms: true
+  use_cell_conditioned_attention: true
+  attention_heads: 4
+  cell_hidden_dims: [512, 256, 128]
+  interaction: bilinear
+  head_dims: [256, 128]
+
+train:
+  max_epochs: 80
+  batch_size: 512
+  lr: 0.0015
+  weight_decay: 0.0001
+  patience: 12
+  grad_clip: 5.0
+  num_workers: 0
+  amp: true
+  scheduler: cosine
+  warmup_epochs: 2
+  seed: 42
+  device: cuda

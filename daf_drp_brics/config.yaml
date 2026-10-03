@@ -1,0 +1,59 @@
+# DAF-DRP (BRICS) — hyperparameters exactly as Table 1 of the paper.
+#
+# Nothing here is tuned. The values are the paper's, so that any difference in
+# the results comes from the architecture and the fragmentation, not from a
+# better search. The two `data` settings at the bottom are the only additions,
+# and they are about *evaluation*, not about the model.
+
+model:
+  dim: 128                  # "GNN hidden dimension 128" / "Embedding dimension (d) 128"
+  atom_layers: 5            # "AtomGNN/FragGNN layers (L_a, L_f) 5/5"
+  frag_layers: 5
+  vocab_size: 798           # "Fragment vocabulary size 798"
+  cell_dim: 128             # "Cell-line MLP hidden dimension (d_cell) 128"
+  dropout: 0.2              # "Dropout rate 0.2"
+  head_dims: [64]           # "Prediction head 128 -> 64 -> 1"
+  drug_fusion: W            # DrugFusion   : C | W | A
+  global_fusion: A          # GlobalFusion : C | W | A   (WA was the paper's best)
+  fix_degenerate_attention: false
+  # ^ Keep false to reproduce Eq. 6 as printed. With `a` and `b` being pooled
+  #   vectors, its softmax runs over a single key and is identically 1, so the
+  #   operator reduces to b*W_V. Set true for a non-degenerate variant.
+
+fragmenter:
+  method: brics             # <-- THE substitution: BRICS replaces Principal Subgraph Mining
+  max_fragments: 32
+  min_fragment_atoms: 2
+  min_vocab_count: 1        # keep every mined fragment, as the paper does
+  vocab_source: all         # all | train
+  # ^ `all` mines the vocabulary over every drug in the dataset, which is the
+  #   closest analogue to the paper's externally pre-mined vocabulary and is
+  #   deliberately generous. `train` mines per fold with no leakage; expect
+  #   worse coverage and worse numbers.
+
+train:
+  optimizer: adam           # "Optimizer Adam"
+  lr: 0.0001                # "Learning rate 1e-4"
+  batch_size: 256           # "Batch size 256"
+  max_epochs: 150           # "Max. epochs 150"
+  patience: 20              # "Early-stopping patience 20"
+  loss: mse                 # "Loss / early-stopping metric MSE"
+  seed: 42                  # "Random seed 42"
+  weight_decay: 0.0
+  grad_clip: 0.0
+  amp: true
+  device: cuda
+
+data:
+  dataset_name: GDSC2
+  path_data: ../data
+  test_mode: LDO            # the paper reports random pair splits; see README
+  n_cv_splits: 6
+  validation_ratio: 0.1
+  response_transform: standard
+  cell_line_view: gene_expression
+  gene_subset: landmark     # "LINCS L1000 landmark set", z-scored per fold
+  min_pairs_per_drug: 20
+  min_pairs_per_cell_line: 5
+
+output_dir: results

@@ -1,0 +1,9 @@
+# A1 -- atom-level GIN only. This is the GraphDRP/DeepCDR family of drug
+# encoder, and the baseline the fragment hypothesis has to beat.
+defaults: [../base.yaml]
+name: abl_a1_atom_only
+model:
+  name: A1-AtomOnly
+  use_atom_view: true
+  use_frag_view: false
+  use_cell_conditioned_attention: false

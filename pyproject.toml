@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fragdrp"
+version = "0.1.0"
+description = "Hierarchical fragment-aware drug response prediction, benchmarked on nf-core/drugresponseeval"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.2",
+    "rdkit>=2023.9",
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "pyyaml",
+    "tqdm",
+    "matplotlib",
+    "drevalpy>=1.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"

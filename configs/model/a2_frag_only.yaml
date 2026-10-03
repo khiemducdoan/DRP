@@ -1,0 +1,11 @@
+# A2 -- fragment view only, with no atom-level message passing feeding it.
+# Fragment states come purely from descriptors and functional groups.
+# Tests how much of the signal is carried by the chemical priors alone.
+defaults: [../base.yaml]
+name: abl_a2_frag_only
+model:
+  name: A2-FragOnly
+  use_atom_view: false
+  use_frag_view: true
+  compose_from_atoms: false
+  use_cell_conditioned_attention: false

@@ -1,0 +1,11 @@
+# A3 -- both views, fragments composed from atoms, but NO chemical priors.
+# Isolates the contribution of the hierarchical structure itself from the
+# contribution of the descriptors and functional-group vectors.
+defaults: [../base.yaml]
+name: abl_a3_atom_frag_bare
+featurizer:
+  use_descriptors: false
+  use_functional_groups: false
+model:
+  name: A3-AtomFrag-NoPriors
+  use_cell_conditioned_attention: false

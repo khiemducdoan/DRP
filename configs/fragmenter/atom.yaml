@@ -1,0 +1,12 @@
+# Control: every atom is its own fragment. The "fragment" graph is then just
+# the molecular graph again, so the fragment branch adds depth but no
+# coarse-graining. Shows whether the gain comes from abstraction or from extra
+# parameters.
+defaults: [../base.yaml]
+name: frag_atom
+fragmenter:
+  method: atom
+  min_fragment_atoms: 1
+  max_fragments: 64
+model:
+  name: FragDRP-atom

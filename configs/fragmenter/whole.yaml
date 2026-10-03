@@ -1,0 +1,10 @@
+# Control: the whole molecule is a single fragment. The fragment graph has one
+# node and no edges, so the fragment branch collapses to a second readout of
+# the molecule. The lower bound on what fragmentation can buy.
+defaults: [../base.yaml]
+name: frag_whole
+fragmenter:
+  method: whole
+  min_fragment_atoms: 1
+model:
+  name: FragDRP-whole

@@ -1,0 +1,6 @@
+# Leave-drug-out: unseen drugs. The only protocol in which a claim about drug
+# representation is falsifiable, and therefore the primary setting here.
+defaults: [../base.yaml]
+name: protocol_ldo
+data:
+  test_mode: LDO

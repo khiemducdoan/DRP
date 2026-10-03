@@ -1,0 +1,5 @@
+# Leave-cell-line-out: unseen cell lines, all drugs seen. Tests the omics encoder.
+defaults: [../base.yaml]
+name: protocol_lco
+data:
+  test_mode: LCO
